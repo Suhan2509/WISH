@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fairyland Quiz</title>
+    <style>
+        body {
+            background: url('https://i.pinimg.com/736x/ef/be/87/efbe876351fec9e1729322841312e5d5.jpg') no-repeat center center/cover;
+            text-align: center;
+            font-family: 'Comic Sans MS', cursive;
+            color: white;
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            background: rgba(255, 182, 193, 0.8);
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 0 15px pink;
+        }
+        button {
+            background: #ff69b4;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 18px;
+            color: white;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+        button:hover {
+            background: #ff1493;
+        }
+        .video-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        video {
+            width: 45%;
+            max-width: 500px;
+            border-radius: 15px;
+            margin-top: 20px;
+            box-shadow: 0 0 15px pink;
+        }
+        .note {
+            margin-top: 10px;
+            font-size: 14px;
+            color: red;
+        }
+    </style>
+    <script>
+        function updateContent(message, buttonsHTML = '') {
+            document.getElementById('content').innerHTML = `
+                <h1>${message}</h1>
+                ${buttonsHTML}
+            `;
+        }
+
+        function showCorrectMessage() {
+            updateContent(
+                'YES YOU ARE RIGHT 🎉<br>AND DO YOU KNOW WHAT TODAY IS ? 🤔',
+                `<button onclick='showSachme()'>NO</button>`
+            );
+        }
+
+        function showSachme() {
+            updateContent(
+                'SACHME ?',
+                `<button onclick='showBirthday()'>NHI</button>`
+            );
+        }
+
+        function showBirthday() {
+            updateContent(
+                'AREY! TODAY IS YOUR BIRTHDAY 🎂🎉',
+                `<button onclick='wishkrdu()'>AREY HN ! 😍</button>`
+            );
+        }
+
+        function wishkrdu() {
+            updateContent(
+                'TOH WISH KRDU? 😁',
+                `<button onclick='showWishQuestion()'>HNJI KRO 😅</button>`
+            );
+        }
+
+        function showWishQuestion() {
+            document.getElementById('content').innerHTML = `
+                <h1>BUT PEHLE PARICHAY KRWATE H APKO KHUDSE 😅</h1>
+                <button onclick='showVideo()'>HNJI KARAO 😅</button>
+            `;
+        }
+
+        function showVideo() {
+            document.getElementById('content').innerHTML = `
+                <div class="video-container">
+                    <video id="introVideo" controls autoplay>
+                        <source src="INTRO.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <br>
+                    <button id="nextButton" onclick='showVideo1()'>HEY BHAGWAN 😅😂</button>
+                    <p class="note">NOTE : Click "HEY BHAGWAN" whenever you feel like it 😅 </p>
+                </div>
+            `;
+        }
+
+        function showVideo1() {
+            updateContent(
+                'CHALO ABB WISH KRTE H 😅🎂🎉',
+                `<button onclick='playNextVideo()'>HNJI 😅</button>`
+            );
+        }
+
+        function playNextVideo() {
+            document.getElementById('content').innerHTML = `
+                <div class="video-container">
+                    <video id="nextVideo" controls autoplay>
+                        <source src="NEXT.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <br>
+                    <button id="finalButton" onclick='showFinalWish()'>ABB NEXT 😅😂</button>
+                </div>
+            `;
+        }
+
+        function showFinalWish() {
+            updateContent(
+                'ONCE AGAIN, WISH YOU A HAPPIEST BIRTHDAY CHIKUUU 😅😁🤗😙💝❤️💗💖💕💘',
+                `<button onclick='location.reload()'>AAB AAO TELE MAIN 😅</button>
+                <p class="note">NOTE: Reply tele main dena h 😅</p>`
+            );
+        }
+
+        function showMessage(msg) {
+            updateContent(msg, `<button onclick="location.reload()">ACHAA NHI NHI 😅😅</button>`);
+        }
+
+        function showMessageIndependence(msg) {
+            updateContent(msg, `<button onclick="location.reload()">ACHAA NHI NHI 😅😅</button>`);
+        }
+    </script>
+</head>
+<body>
+    <div class="container" id="content">
+        <h1>DO YOU KNOW WHAT IS TODAY'S DATE?</h1>
+        <button onclick="showMessage('AISI KOI DATE HOTI BHI H ? DUMBOOOO 😂')">31ST FEBRUARY</button>
+        <button onclick="showCorrectMessage()">25TH MARCH</button>
+        <button onclick="showMessageIndependence('AAJ INDEPENDENCE DAY H ? 😑')">15TH AUGUST</button>
+    </div>
+</body>
+</html>
